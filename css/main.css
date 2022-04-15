@@ -3818,7 +3818,7 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
 footer {
-  padding-top: 4rem;
+  padding-top: 2rem;
   padding-bottom: 0rem;
   color: rgba(255, 255, 255, 0.6);
   background-color: #5e3080;
@@ -3960,7 +3960,7 @@ form fieldset {
 }
 
 svg {
-  background: #0c0c0c;
+  background: #0f0f0f;
   display: inline-block;
 }
 
