@@ -3819,7 +3819,7 @@ html.no-csstransitions .home-content__main {
  * ------------------------------------------------------------------- */
 footer {
   padding-top: 9rem;
-  padding-bottom: 6rem;
+  padding-bottom: 0rem;
   color: rgba(255, 255, 255, 0.6);
   background-color: #5e3080;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
