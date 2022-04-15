@@ -2861,7 +2861,7 @@ html.no-csstransitions .home-content__main {
  * ------------------------------------------------------------------- */
 .s-services {
   padding-top: 18rem;
-  padding-bottom: 18rem;
+/*   padding-bottom: 18rem; */
   position: relative;
 }
 
@@ -3934,6 +3934,63 @@ footer a {
     padding: 0 2rem;
   }
 
+}
+
+form {
+  float: right;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid #b1b1b3;
+  border-radius: 1em;
+  padding: 1em;
+/*   margin-left: 300px; */
+  margin-right: 45px;
+  margin-top: 515px;
+}
+
+form fieldset {
+  margin-top: .5em;
+}
+
+#interval {
+  direction: rtl;
+}
+
+svg {
+  background: #0c0c0c;
+  display: inline-block;
+}
+
+circle {
+  fill: #bbb;
+  stroke-width: 2;
+  stroke: #f1f1f1;
+}
+
+circle.queued {
+  fill: #ff9400;
+}
+
+circle.visited {
+  fill: #55c1ff;
+}
+
+circle.current {
+  fill: yellow;
+  stroke: red;
+  stroke-width: 2;
+}
+
+line {
+  stroke-width: 1.5;
+  stroke: #444;
+}
+
+text {
+  fill: white;
 }
 
 /*# sourceMappingURL=main.css.map */

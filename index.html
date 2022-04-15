@@ -254,7 +254,7 @@
             </div>
         </div> <!-- end section-header -->
 
-        <div class="row bit-narrow services block-1-2 block-tab-full">
+<!--         <div class="row bit-narrow services block-1-2 block-tab-full">
 
             <div class="col-block item-service" data-aos="fade-up">
                 <div class="item-service__icon">
@@ -332,7 +332,36 @@
                 </div>
             </div>
 
-        </div> <!-- end services -->
+        </div> <!-- end services --> 
+
+        <svg></svg>
+<form>
+  <div>
+    <button type="button" id="step">Step</button>
+    <button type="button" id="toggle-run">Run</button>
+    <button type="button" id="reset">Reset</button>
+  </div>
+  <div>
+    Slower
+    <input type="range" min="10" max="200" step="10" id="interval">
+    Faster
+  </div>
+  <div>
+    <button type="button" id="graph-1">Graph 1</button>
+    <button type="button" id="graph-2">Graph 2</button>
+    <button type="button" id="graph-3">Graph 3</button>
+  </div>
+  <fieldset>
+    <legend>Algorithm</legend>
+    <input type="radio" id="bfs" name="algorithm" checked><label for="bfs">BFS</label>
+    <input type="radio" id="dijkstra" name="algorithm"><label for="dijkstra">Dijkstra</label>
+  </fieldset>
+</form>
+
+
+  
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="animations.js"></script>
 
     </section> <!-- end s-services -->
 
