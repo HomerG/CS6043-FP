@@ -2115,7 +2115,7 @@ body.menu-is-open {
 .home-content h1 {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  font-size: 18rem;
+  font-size: 15rem;
   line-height: 1;
   letter-spacing: -.02em;
   color: #FFFFFF;
@@ -3394,7 +3394,7 @@ html.no-csstransitions .home-content__main {
   padding-bottom: 21rem;
   text-align: center;
   position: relative;
-  background-image: url(../images/hero-bg.jpg);
+  background-image: url(../images/code_BG.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
