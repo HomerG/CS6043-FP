@@ -3993,4 +3993,16 @@ text {
   fill: white;
 }
 
+.center {
+  /*margin: auto;*/
+  margin-left: 25%;
+  width: 50%;
+  height: 500px;
+  /*border: 3px solid green;*/
+  /*padding: 10px;*/
+  margin-top: 3%;
+  margin-bottom: 5%;
+
+}
+
 /*# sourceMappingURL=main.css.map */
