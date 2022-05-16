@@ -1,0 +1,139 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  background: #121318;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px), radial-gradient(ellipse, #090a0c, #121318);
+  background-size: 40px 40px, 40px 40px, 100% 100%;
+  background-position: -1px -1px, -1px -1px, center center;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+#scanline {
+  opacity: 0;
+  transition: opacity 800ms;
+}
+#scanline.show {
+  opacity: 1;
+}
+
+#points circle {
+  stroke: none;
+  fill: #fff;
+  opacity: 0;
+}
+#points circle.show {
+  opacity: 1;
+}
+
+@-webkit-keyframes flashOpacity {
+  0% {
+    opacity: 0;
+  }
+  7% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes flashOpacity {
+  0% {
+    opacity: 0;
+  }
+  7% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes flashStroke {
+  0% {
+    stroke: rgba(254, 133, 0, 0.9);
+  }
+  100% {
+    stroke: rgba(251, 252, 252, 0.65);
+  }
+}
+@keyframes flashStroke {
+  0% {
+    stroke: rgba(254, 133, 0, 0.9);
+  }
+  100% {
+    stroke: rgba(251, 252, 252, 0.65);
+  }
+}
+.triangleGroup {
+  opacity: 0;
+}
+.triangleGroup .circumference, .triangleGroup .center {
+  stroke: rgba(248, 250, 250, 0.04);
+  stroke-width: 2;
+  fill: transparent;
+  transition: stroke 500ms;
+}
+.triangleGroup .triangle {
+  stroke: rgba(251, 252, 252, 0.65);
+  stroke-width: 2;
+  stroke-linejoin: bevel;
+  fill: transparent;
+  transition: stroke 500ms;
+}
+.triangleGroup.flash {
+  -webkit-animation: flashOpacity 1200ms cubic-bezier(0.215, 0.61, 0.355, 1) 1;
+          animation: flashOpacity 1200ms cubic-bezier(0.215, 0.61, 0.355, 1) 1;
+}
+.triangleGroup.flash .circumference, .triangleGroup.flash .center {
+  opacity: 0;
+}
+.triangleGroup.temporary .triangle {
+  stroke-dasharray: 20 30;
+}
+.triangleGroup.candidate {
+  opacity: 1;
+  transition: opacity 800ms;
+}
+.triangleGroup.candidate.temporary {
+  opacity: 0.5;
+}
+.triangleGroup.candidate .triangle {
+  stroke: rgba(0, 170, 94, 0.7);
+}
+.triangleGroup.candidate .circumference {
+  stroke: rgba(17, 102, 57, 0.45);
+}
+.triangleGroup.candidate .center {
+  stroke: rgba(17, 102, 57, 0.25);
+}
+.triangleGroup.rejected {
+  opacity: 0;
+  transition: opacity 1600ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.triangleGroup.rejected .triangle {
+  stroke: rgba(230, 35, 37, 0.9);
+  transition: stroke 200ms;
+}
+.triangleGroup.rejected .circumference {
+  stroke: rgba(131, 35, 30, 0.65);
+  transition: stroke 200ms;
+}
+.triangleGroup.rejected .center {
+  stroke: rgba(131, 35, 30, 0.25);
+  transition: stroke 200ms;
+}
+.triangleGroup.locked {
+  opacity: 1;
+}
+.triangleGroup.locked .triangle {
+  -webkit-animation: flashStroke 800ms cubic-bezier(0.215, 0.61, 0.355, 1) 1 forwards;
+          animation: flashStroke 800ms cubic-bezier(0.215, 0.61, 0.355, 1) 1 forwards;
+}

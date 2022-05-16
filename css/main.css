@@ -423,6 +423,8 @@ dd {
   /*padding-bottom: 56.25%;*/
   height: 0;
   overflow: hidden;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
 }
 
 @media only screen and (max-width:1400px) {
@@ -2754,7 +2756,7 @@ html.no-csstransitions .home-content__main {
  * ------------------------------------------------------------------- */
 .s-about {
   padding-top: 18rem;
-  padding-bottom: 18rem;
+  padding-bottom: 10rem;
   background-color: #121212;
   position: relative;
 }
@@ -2885,8 +2887,8 @@ html.no-csstransitions .home-content__main {
  * ------------------------------------------------------------------- */
 .s-services {
   padding-top: 10rem;
-   padding-bottom: 8rem; 
-/*   padding-bottom: 18rem; */
+   /*padding-bottom: 8rem; */
+   padding-bottom: 10rem; 
   position: relative;
 }
 
