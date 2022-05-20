@@ -194,6 +194,24 @@ p.lead {
   color: rgba(255, 255, 255, 0.2);
 }
 
+p.li {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+  font-size: 2.4rem;
+  line-height: 1.625;
+  margin-bottom: 3.6rem;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+p.ul {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+  font-size: 2.4rem;
+  line-height: 1.625;
+  margin-bottom: 3.6rem;
+  color: rgba(255, 255, 255, 0.2);
+}
+
 @media only screen and (max-width:1200px) {
   p.lead {
     font-size: 2.2rem;
@@ -376,6 +394,12 @@ ul {
 
 ul li {
   padding-left: .4rem;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+  font-size: 2.4rem;
+  line-height: 1.625;
+  margin-bottom: 3.6rem;
+  color: rgba(255, 255, 255, 0.2);
 }
 
 ul ul,
