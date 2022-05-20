@@ -321,7 +321,7 @@
         <div class="row bit-narrow" data-aos="fade-up">
             <div class="col-full">
                 <p class="lead">
-                    In this section we present a simple incremental algorithm that constructs the Delaunay Triangulation. The Delaunay triangulation (or else Delone) can be defined as a triangulation method such that given a set of vertices V, after applying a triangulation transformation DT(V), no vertex lies inside the circumcircle of any triangle. The objective of this technique is to maximize the minimum angle between all the angles of the existing triangles. As a result, we obtain a structure that does not frequently contain triangles with extremely acute angles.
+                    In this section we present a simple incremental algorithm that constructs the Delaunay Triangulation. The Delaunay triangulation (or else Delone) can be defined as a triangulation method such that given a set of vertices V, after applying a triangulation transformation DT(V), no vertex lies inside the circumcircle of any triangle (besides the vertices that form that triangle). The objective of this technique is to maximize the minimum angle between all the angles of the existing triangles. As a result, we obtain a structure that does not frequently contain triangles with extremely acute angles.
                 </p>
                 <p class="lead">
                     The input of the algorithm is a set of points (nodes) V = {v1,v2,...vn}. The idea of the algorithm is to incrementally insert new points one after another and update our structure every round. It is also important to point out that this method always maintains  a Deulaunay triangulation at any given point in time.  
@@ -347,13 +347,13 @@
                     Before we begin with our vertex insertion process, we need to ensure that all our vertices in the vertex set S are contained within one large triangle. This temporary triangle is necessary to exist as the whole process is based on the idea that every newly added vertex should fall within some existing triangle. To satisfy this condition, we add 3 temporary vertices which form a triangle that encloses all the vertices of V. After our triangulation process is concluded for all the vertices of V, the temporary vertices and consequently the edges that connect to them will be removed.
                 </p>
                 <p class="lead">
-                    After we generate the temporary triangle, we begin our process by arbitrarily inserting a new vertex Vk in space every round.  The next step is to find the triangle Dabc that contains Vk. After we identify the triangle Dabc, we draw edges from each vertex (a,b,c) that connect to Vk {a,vK}, {b,Vk}, {c,Vk}. This consequently creates 3 sub-triangles DabVk, DacVk, DbcVk. 
+                    After we generate the temporary triangle, we begin our process by arbitrarily inserting a new vertex Vk in space every round.  The next step is to find the triangle Δabc that contains Vk. After we identify the triangle Δabc, we draw edges from each vertex (a,b,c) that connect to Vk {a,vK}, {b,Vk}, {c,Vk}. This consequently creates 3 sub-triangles ΔabVk, ΔacVk, ΔbcVk. 
                 </p>
                 <p class="lead">
-                    Now, for each new triangle we need to check the vertex of the triangle that lies on the opposite side of the edge that does not contain Vk. To elaborate, assume that our triangle is Dv1,v2,Vk. We need to identify the vertex d, that is on the opposite side of {v1,v2} That does not include Vk. In such a vertex d does not exist, this implies that our edge {v1,v2} falls on the convex hull. In this case we do nothing. If however we do identify a vertex Vd, then we need to follow the process below: 
+                    Now, for each new triangle we need to check the vertex of the triangle that lies on the opposite side of the edge that does not contain Vk. To elaborate, assume that our triangle is Δv1v2Vk. We need to identify the vertex d, that is on the opposite side of {v1,v2} That does not include Vk. If such a vertex d does not exist, this implies that our edge {v1,v2} falls on the convex hull. In this case we do nothing. If however we do identify a vertex Vd, then we need to follow the process below: 
                 </p>
                 <p class="lead">
-                    If Vd is within the circumcircle of Dv1,v2,vk, then we remove {v1,v2}, and connect vk,vd with {vk,vd}. In addition, we recursively repeat the same process, this time with triangles Dvkv1vd, and Dvkv2,vd.  
+                    If Vd is within the circumcircle of Δv1v2vk, then we remove {v1,v2}, and connect vk,vd with {vk,vd}. In addition, we recursively repeat the same process, this time with triangles Δvkv1vd, and Δvkv2,vd.  
                 </p>
 
                 <h3 class="subhead">Pseudocode</h3>
@@ -423,12 +423,12 @@
                     Before we begin to describe the 2 algorithms in detail, it is important to provide some necessary definitions related to the problem:  
                 </p>
                 <p class ="lead">
-                    Star shaped Polygon - A star-shaped polygon can be defined as a polygonal shape that contains a region that is able to see the entire shape.
+                    Star-shaped Polygon - A star-shaped polygon can be defined as a polygonal shape that contains a region that is able to see the entire shape. We call the points that fall in this region kernels.
                 </p>
 
 
                 <p class ="lead">
-                    Weakly edge visible - A polygon is defined as weakly edge-visible if it contains an edge pq subset of boundary of P, such that every point p of P can see some part of the edge pq. 
+                    Weakly edge visible polygon - A polygon is defined as weakly edge-visible if it contains an edge {p,q} subset of boundary of P, such that every point p of P can see some part of the edge {p,q}. 
 
                 </p>
 
@@ -464,18 +464,41 @@
                 <h3 class="subhead">Algorithm without Guard Set input</h3>
 
                 <p class="lead">
-                    In this algorithm an input set that contains k guards is provided as an input. The triangulation time is still O(kn). A difference between the previous algorithm is that it does not compute the edge visibility polygon, therefore a significant amount of complexity is avoided. 
+                    This algorithm shows how we can triangulate a k-guardable polygon in O(kn) time without having any knowledge about the guard set. As it appears, the most complex procedure of this algorithm is the computation of the VP in linear time, and consequently the EEVP (in linear time as well). We consider the following:
                 </p>
-                <p class="lead">
-                    The most complex part of the algorithm is to determine the visibility polygon of a point. The algorithm determines the vertical decomposition of P in O(kn) time. To elaborate, it computes all the vertical extensions of P that are crossing the visibility polygon of a guard. This happens in O(n), so for k guards overall would give us O(kn). 
+                <p class ="lead">
+                    <ul class="lead">
+                        <li class="lead"> Given a vertex x of polygon P and a point y on the edge {v,w} of P, then if y sees x, the geodesic between x and v is a convex chain and entirely visible from y. It can also be computed in O(n) time. 
+                        </li>
 
+                        <li class="lead">A weakly edge-visible polygon can be triangulated in linear time
+                        </li>
+                        <li>
+                            The EVP can be computed in O(n) time
+                        </li>
+                        <li>
+                            An EEVP can also be computed and triangulated in O(n) time
+                        </li>
+                    </ul>
                 </p>
+
                 <p class="lead">
-                    Afterwards, since we have the vertical decomposition of P, finding the triangulation of P is a simple task. The algorithm is described in pseudo code below: 
+                    The objective with this algorithm is to make use of the linear-time triangulation on EEVPs to obtain a triangulation for the whole polygon P. When an EEVP is computed, we obtain windows of new pockets. These are generated by the diagonals of P that are on the boundary of the corresponding EEVP. Using each new window, in a recursive way we compute a new VP, and then we triangulate it within that pocket. This happens until we triangulate all of P.                     
+                </p>
+
+                <p class="lead">
+                    It is important to note that the recursion depth will always be equivalent to the order of the number of guards that are required to guard the boundary of P. Furthermore, to keep track of all the windows and their respective polygons we implement a queue, which is used in the algorithm, as it provides the elements in the order in which they were added. 
+                </p>
+
+                <p class="lead">
+                    Lastly, we observe that the EEVPs that are created by the algorithm develop a tree structure. This tree structure will have at most 3k levels which implies that the main loop of the algorithm will require at most 3k iterations. Since there are no relations between the nodes of the tree, every level can be processed in O(n) time. Consequently, we get an overall runtime of O(kn).
                 </p>
 
 
                 <h3 class="subhead">Pseudocode</h3>
+                <p class="lead">
+                    A pseudocode for the described algorithm is provided below:
+                </p>
                 <p class="lead">
                     <xmp>
                     For every edge w of P do:
@@ -486,8 +509,8 @@
                         For every edge wj of EEVP(wi,Pi) do:
                             If it is boundary and diagonal of P then:
                                 Determine Qj as the untriangulated region of P. 
-                    (The boundary of Qj is enclosed by wj and the boundary of P)
-                    Add (wj,Qj) to S
+                                (The boundary of Qj is enclosed by wj and the boundary of P)
+                                Add (wj,Qj) to S
                     Return P
                     </xmp>
 
@@ -497,7 +520,16 @@
                 <h3 class="subhead">Algorithm with Guard Set input</h3>
 
                 <p class="lead">
-                    In this algorithm an input set that contains k guards is provided as an input. The triangulation time is still O(kn). A difference between the previous algorithm is that it does not compute the edge visibility polygon, therefore a significant amount of complexity is avoided. 
+                    In this algorithm an input set that contains k guards is provided as an input. The triangulation time is still O(kn). A difference between the previous algorithm is that it does not compute the edge visibility polygon, therefore a significant amount of complexity is avoided. We consider the following: 
+                </p>
+                <p class ="lead">
+                    <ul class="lead">
+                        <li class="lead">The vertical projection onto w can be computed in O(|Pw|) time
+                        </li>
+
+                        <li class="lead">The vertical decomposition of a star-shaped polygon P can be computed in O(n) time
+                        </li>
+                    </ul>
                 </p>
                 <p class="lead">
                     The most complex part of the algorithm is to determine the visibility polygon of a point. The algorithm determines the vertical decomposition of P in O(kn) time. To elaborate, it computes all the vertical extensions of P that are crossing the visibility polygon of a guard. This happens in O(n), so for k guards overall would give us O(kn). 
@@ -512,41 +544,45 @@
                 <p class="lead">
                     <xmp>
                     For every guard g that belongs in the Guard set do:
+
                         Find the visibility polygon VP1
                         For every window w in VP1 do:
+
                             Determine the vertical projection onto w 
                             Add the Steiner points to w
                         (From this process we obtain a simple polygon VP2)
                         Compute the vertical decomposition of VP2
                         For every vertex v in VP2 do:
+
                             If it is not a steiner point added in the previous step then:
                                 Add the vertical extension of v to the boundary of VP2
                         (From the previous process we obtain a polygon VP3)
                         For every vertex v in VP3 do:
+
                             Determine the endpoints of vert(v) on the boundary of P
                     </xmp>
 
                 </p>
 
 
-                <h3 class="subhead">Runtime information</h3>
+                <!-- <h3 class="subhead">Runtime information</h3>
                 <p class ="lead">
                     <ul class="lead">
                         <li class="lead">The vertical projection onto w can be computed in O (| P w |) time.
                         </li>
 
                         <li class="lead">The vertical decomposition of a star-shaped polygon P is correctly computed by the above algorithm in O ( n) time.
-</li>
+                        </li>
                     </ul>
-                </p>
+                </p> -->
 
             </div>
         </div> <!-- end about-desc -->
 
-        <div class="video-container">
+<!--         <div class="video-container">
         <iframe height="500"
         src="https://www.youtube.com/embed/GRonxog5mbw?autoplay=1&loop=1&playlist=GRonxog5mbw&autoplay=1">
-        </iframe>
+        </iframe> -->
 
     </section> <!-- end s-about -->
 
