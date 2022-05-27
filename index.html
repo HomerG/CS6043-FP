@@ -64,7 +64,7 @@
             <div class="row home-content__main">
 
                 <h1>
-                Visualizing Triangulations
+                Visualizing Triangulation Algorithms
                 </h1>
 
                 <h3>
@@ -89,31 +89,7 @@
 
             </div> <!-- end home-content__main -->
 
-            <div class="home-content__scroll">
-                <a href="#about" class="scroll-link smoothscroll">
-                    Scroll
-                </a>
-            </div>
-
         </div> <!-- end home-content -->
-
-<!--         <ul class="home-social">
-            <li>
-                <a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i><span>Facebook</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fab fa-behance" aria-hidden="true"></i><span>Behance</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fab fa-dribbble" aria-hidden="true"></i><span>Dribbble</span></a>
-            </li>
-        </ul> <!-- end home-social -->
 
     </section> <!-- end s-home --> 
 
@@ -154,34 +130,41 @@
 
         <div class="row section-header bit-narrow" data-aos="fade-up">
             <div class="col-full">
-                <h3 class="subhead">What we do</h3>
                 <h1 class="display-1">
-                Algorithm 1
+                    Quadratic Triangulation
                 </h1>
             </div>
         </div>
         <div class="row bit-narrow" data-aos="fade-up">
             <div class="col-full">
                 <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
+                    This method uses a linear time method to find a diagonal, then recurses on both halves. In the best case when the diagonal evenly partitions the points of the polygon, the algorithm runs in O(nlog(n)) time in much the same way Quicksort operates. In the worst case, the diagonal only clips an ear and the algorithm runs in O(n^2) time.
                 </p>
+                <h3 class="subhead">Analysis</h3>
                 <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
-                </p>
-                <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
-                </p>
-                <p>
-                    
+                    In the best case the algorithm runs as,
+
+                    T(n) = n + 2T(n/2) = O(nlog(n))
+
+                    But in the worst case the algorithm runs as,
+
+                    T(n) = n + T(1) + T(n-1) = O(n^2)
                 </p>
             </div>
         </div> <!-- end about-desc -->
 
         <div class="video-container">
-        <iframe height="500"
-        src="https://www.youtube.com/embed/GRonxog5mbw?autoplay=1&loop=1&playlist=GRonxog5mbw&autoplay=1">
-        </iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/6rS8l3J59yc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
+
+        <div class="row bit-narrow" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">An Itterative Improvement</h3>
+                <p class="lead">
+                    Instead of recursing on each side, 
+                </p>
+            </div>
+        </div> <!-- end about-desc -->
     </section> <!-- end s-services -->
 
 
@@ -190,9 +173,8 @@
 
         <div class="row section-header bit-narrow" data-aos="fade-up">
             <div class="col-full">
-                <h3 class="subhead">Who We Are</h3>
                 <h1 class="display-1">
-                Algorithm 2
+                    Improved triangulation: O(nlogn)
                 </h1>
             </div>
         </div> <!-- end section-header -->
@@ -200,59 +182,18 @@
         <div class="row bit-narrow" data-aos="fade-up">
             <div class="col-full">
                 <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
+                    This method uses a scanline approach to first preprocess a polygon into monotone sub-polygons. A monotone polygon has halves, a right and left side. Each side is monotone, meaning points are strictly increasing or decreasing along the y-axis. Once decomposed into monotone sub-polygons, each sub-polygon can be triangulated in O(n) time.
                 </p>
                 <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
-                </p>
-                <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
+                    A scanline approach considers points in order by y-coordinate. To achieve this, the points must be sorted, so immediately the algorithm runs in Omega(nlogn).
                 </p>
             </div>
         </div> <!-- end about-desc -->
 
         <div class="video-container">
-        <iframe height="500"
-        src="https://www.youtube.com/embed/GRonxog5mbw?autoplay=1&loop=1&playlist=GRonxog5mbw&autoplay=1">
-        </iframe>
-
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/R5_BmFx_KJs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </section> <!-- end s-about -->
-
-    <!-- ALGO A
-    ================================================== -->
-    <section id='services' class="s-services target-section darker">
-
-        <div class="row section-header bit-narrow" data-aos="fade-up">
-            <div class="col-full">
-                <h3 class="subhead">What we do</h3>
-                <h1 class="display-1">
-                Algorithm 3
-                </h1>
-            </div>
-        </div>
-        <div class="row bit-narrow" data-aos="fade-up">
-            <div class="col-full">
-                <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
-                </p>
-                <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
-                </p>
-                <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
-                </p>
-                <p>
-                    
-                </p>
-            </div>
-        </div> <!-- end about-desc -->
-
-        <div class="video-container">
-        <iframe height="500"
-        src="https://www.youtube.com/embed/GRonxog5mbw?autoplay=1&loop=1&playlist=GRonxog5mbw&autoplay=1">
-        </iframe>
-        </div>
-    </section> <!-- end s-services -->
 
 
     <!-- ALGO D -->
