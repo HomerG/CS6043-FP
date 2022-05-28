@@ -627,8 +627,8 @@ form,
 
 /* dots jump */
 .dots-jump > div {
-  -webkit-animation: dots-jump 0.1s infinite ease;
-  animation: dots-jump 0.1s infinite ease;
+  /*-webkit-animation: dots-jump 0.05s infinite ease;*/
+  /*animation: dots-jump 0.2s infinite ease;*/
   /*animation-delay: 0.2s;*/
 }
 
@@ -637,7 +637,7 @@ form,
 }
 
 .dots-jump > div:nth-of-type(3) {
-  animation-delay: 0s;
+  /*animation-delay: 0s;*/
 }
 
 @-webkit-keyframes dots-jump {
@@ -672,8 +672,8 @@ form,
 
 /* dots fade */
 .dots-fade > div {
-  -webkit-animation: dots-fade 0.1s infinite ease;
-  animation: dots-fade 0.1s infinite ease;
+  /*-webkit-animation: dots-fade 0.05s infinite ease;*/
+  /*animation: dots-fade 0.05s infinite ease;*/
   /*animation-delay: 0.07s;*/
 }
 
@@ -682,7 +682,7 @@ form,
 }
 
 .dots-fade > div:nth-of-type(3) {
-  animation-delay: 0s;
+  /*animation-delay: 0s;*/
 }
 
 @-webkit-keyframes dots-fade {
@@ -717,8 +717,8 @@ form,
 
 /* dots pulse */
 .dots-pulse > div {
-  -webkit-animation: dots-pulse 0.1s infinite ease;
-  animation: dots-pulse 0.1s infinite ease;
+  /*-webkit-animation: dots-pulse 0.05s infinite ease;*/
+  /*animation: dots-pulse 0.05s infinite ease;*/
   /*animation-delay: 0.2s;*/
 }
 
@@ -727,7 +727,7 @@ form,
 }
 
 .dots-pulse > div:nth-of-type(3) {
-  animation-delay: 0s;
+  /*animation-delay: 0s;*/
 }
 
 @-webkit-keyframes dots-pulse {
@@ -1929,12 +1929,12 @@ body.menu-is-open {
   visibility: visible;
   -webkit-transition-property: all;
   transition-property: all;
-  -webkit-transition-duration: 0.5s;
-  transition-duration: 0.5s;
+  -webkit-transition-duration: 0.05s;
+  transition-duration: 0.05s;
   -webkit-transition-timing-function: ease-in-out;
   transition-timing-function: ease-in-out;
-  -webkit-transition-delay: 0.2s;
-  transition-delay: 0.2s;
+  -webkit-transition-delay: 0.05s;
+  transition-delay: 0.05s;
   left: 0;
 }
 

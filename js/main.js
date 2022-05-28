@@ -39,7 +39,7 @@
             // will first fade out the loading animation 
             $("#loader").fadeOut("slow", function() {
                 // will fade out the whole DIV that covers the website.
-                $("#preloader").delay(300).fadeOut("slow");
+                $("#preloader").delay(50).fadeOut("slow");
             }); 
             
             // for hero content animations 
@@ -217,7 +217,7 @@
     var ssAlertBoxes = function() {
 
         $('.alert-box').on('click', '.alert-box__close', function() {
-            $(this).parent().fadeOut(500);
+            $(this).parent().fadeOut(100);
         }); 
 
     };
@@ -228,10 +228,10 @@
     var ssAOS = function() {
         
         AOS.init( {
-            offset: 200,
-            duration: 600,
+            offset: 0,
+            duration: 400,
             easing: 'ease-in-sine',
-            delay: 300,
+            delay: 50,
             once: true,
             disable: 'mobile'
         });
