@@ -64,7 +64,7 @@
             <div class="row home-content__main">
 
                 <h1>
-                Visualizing Triangulations
+                Visualizing Triangulation Algorithms
                 </h1>
 
                 <h3>
@@ -89,31 +89,7 @@
 
             </div> <!-- end home-content__main -->
 
-            <div class="home-content__scroll">
-                <a href="#about" class="scroll-link smoothscroll">
-                    Scroll
-                </a>
-            </div>
-
         </div> <!-- end home-content -->
-
-<!--         <ul class="home-social">
-            <li>
-                <a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i><span>Facebook</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fab fa-behance" aria-hidden="true"></i><span>Behance</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fab fa-dribbble" aria-hidden="true"></i><span>Dribbble</span></a>
-            </li>
-        </ul> <!-- end home-social -->
 
     </section> <!-- end s-home --> 
 
@@ -124,7 +100,6 @@
 
         <div class="row section-header bit-narrow" data-aos="fade-up">
             <div class="col-full">
-                <h3 class="subhead">Who We Are</h3>
                 <h1 class="display-1">
                 Introduction
                 </h1>
@@ -134,13 +109,10 @@
         <div class="row bit-narrow" data-aos="fade-up">
             <div class="col-full">
                 <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
+                    A triangulation of a set of points is created by drawing non-intersecting lines between points until no more lines can be added. Each face in the resulting graph is a triangle. Triangulation graphs have applications in <a href="https://en.wikipedia.org/wiki/Point_location">point location</a> algorithms as well as computer graphics meshing.
                 </p>
                 <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
-                </p>
-                <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
+                    This project covers triangulation algorithms for both polygons composed of an ordered set of points and arbitrary point clouds.
                 </p>
             </div>
         </div> <!-- end about-desc -->
@@ -154,34 +126,58 @@
 
         <div class="row section-header bit-narrow" data-aos="fade-up">
             <div class="col-full">
-                <h3 class="subhead">What we do</h3>
                 <h1 class="display-1">
-                Algorithm 1
+                    Quadratic Triangulation of a Polygon
                 </h1>
             </div>
         </div>
+
         <div class="row bit-narrow" data-aos="fade-up">
             <div class="col-full">
+                <h3 class="subhead">Definitions</h3>
                 <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
+                    A diagonal is a line segment connecting two points.
                 </p>
                 <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
+                    An ear is a diagonal between 2 points that share a common neighbor. That is, 2 consecutive edges of the polygon compose 2 edges of the created triangle. Every polygon has at least 2, non-overlapping ears. A convex polygon of n points contains n ears.
                 </p>
+            </div>
+        </div> <!-- end about-desc -->
+
+        <div class="row bit-narrow" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">Algorithm Summary</h3>
                 <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
+                    This method uses a linear time method to find a diagonal. The discovered diagonal partitions the polygon into 2 halves. This is repeated recursively on both halves until only 3 points remain, the base case. In the best case when the diagonal evenly partitions the points of the polygon, the algorithm runs in O(nlog(n)) time in much the same way Quicksort operates. In the worst case, the diagonal only clips an ear and the algorithm runs in O(n^2) time.
                 </p>
-                <p>
-                    
+                <h3 class="subhead">Analysis</h3>
+                <p class="lead">
+                    In the best case the algorithm runs as, T(n) = n + 2T(n/2) = O(nlog(n)).
+                    <br>
+                    But in the worst case the algorithm runs as T(n) = n + T(1) + T(n-1) = O(n^2).
                 </p>
             </div>
         </div> <!-- end about-desc -->
 
         <div class="video-container">
-        <iframe height="500"
-        src="https://www.youtube.com/embed/GRonxog5mbw?autoplay=1&loop=1&playlist=GRonxog5mbw&autoplay=1">
-        </iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/6rS8l3J59yc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
+
+        <div class="row bit-narrow" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">An Iterative Improvement</h3>
+                <p class="lead">
+                    Independent recursion such as the previous algorithm is useful in multi-processing environments, but when run as a single-threaded process it is an inefficient use of memory as each function call is stored on the call stack with partial information of the solution. The memory usage can be reduced by using an iterative approach.
+                    <br>
+                    Instead of recursing on both sides, pick just 1 side. On this side, find the middle point relative to the discovered diagonal. Find a second diagonal containing this point, also in linear time. The larger side of this second diagonal will always contain the edge of the first diagonal. This side is the bad-sub-polygon because it contains 2 diagonal edges. The other, smaller side is the good-sub-polygon and contains only 1 diagonal edge. Because every polygon contains at least 2 non-overlapping ears, at least 1 ear of the good-sub-polygon is also an ear of the greater polygon.
+                    <br>
+                    Repeat this process until the good-sub-polygon contains only 3 points. Notice, the good-sub-polygon contains less than half the points on the selected side of the partition. This form of recursion forms a geometric series. Thus, an ear is found in O(n) time.
+                </p>
+                <p class="lead">
+                    To triangulate a polygon of n points, n ears must be clipped. Therefore, triangulation by this method run in O(n) time.
+                </p>
+            </div>
+        </div> <!-- end about-desc -->
     </section> <!-- end s-services -->
 
 
@@ -190,69 +186,42 @@
 
         <div class="row section-header bit-narrow" data-aos="fade-up">
             <div class="col-full">
-                <h3 class="subhead">Who We Are</h3>
                 <h1 class="display-1">
-                Algorithm 2
+                    Improved triangulation: O(nlogn)
                 </h1>
             </div>
         </div> <!-- end section-header -->
 
         <div class="row bit-narrow" data-aos="fade-up">
             <div class="col-full">
+                <h3 class="subhead">Algorithm Summary</h3>
                 <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
+                    This method uses a scan-line approach to first preprocess a polygon into monotone sub-polygons. A monotone polygon has 2 halves, a right and left side. The points on each side are strictly increasing or decreasing along the y-axis. Once decomposed into monotone sub-polygons, each sub-polygon can be triangulated in O(n) time. [Not shown in this project]
                 </p>
                 <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
+                    The algorithm has 2 components: Edge memory and vertex classification. As the scan-line moves down, maintain a BST containing all edges intersecting the scan-line. The value of each edge in the BST is the x-coordinate of the intersection with the scan-line. This is unique because the value changes as the scan-line moves, however this maintenance is done in constant time because while the BST value may change, the order of the lines will not, by the definition of simple polygon. Additionally, maintain a helper for each edge. The helper is the most recent point above the scanline that is horizontally visible from the given edge in the tree.
+                    <br>
+                    Each point is classified into 1 of 5 categories. Diagonals are added depending on the classification of the point and the helper of the edge to the point's left.
+                    <br>
                 </p>
+                <!-- TODO: Fix this image -->
+                <img src="https://imgur.com/a/K33KxRb" />
+                <h3 class="subhead">Analysis</h3>
                 <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
+                    A scanline approach considers points in order by y-coordinate. To achieve this, the points must be sorted, so immediately the algorithm runs in Omega(nlogn).
                 </p>
             </div>
         </div> <!-- end about-desc -->
 
         <div class="video-container">
-        <iframe height="500"
-        src="https://www.youtube.com/embed/GRonxog5mbw?autoplay=1&loop=1&playlist=GRonxog5mbw&autoplay=1">
-        </iframe>
-
-    </section> <!-- end s-about -->
-
-    <!-- ALGO A
-    ================================================== -->
-    <section id='services' class="s-services target-section darker">
-
-        <div class="row section-header bit-narrow" data-aos="fade-up">
-            <div class="col-full">
-                <h3 class="subhead">What we do</h3>
-                <h1 class="display-1">
-                Algorithm 3
-                </h1>
-            </div>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/R5_BmFx_KJs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <div class="row bit-narrow" data-aos="fade-up">
-            <div class="col-full">
-                <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
-                </p>
-                <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
-                </p>
-                <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
-                </p>
-                <p>
-                    
-                </p>
-            </div>
-        </div> <!-- end about-desc -->
-
-        <div class="video-container">
-        <iframe height="500"
-        src="https://www.youtube.com/embed/GRonxog5mbw?autoplay=1&loop=1&playlist=GRonxog5mbw&autoplay=1">
-        </iframe>
-        </div>
-    </section> <!-- end s-services -->
+        
+        <!-- TODO: Fix this video, for some reason it gets over written with a later video -->
+        <!-- <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/-OFzpoj61U0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div> -->
+    </section>
 
 
     <!-- ALGO D -->
