@@ -185,6 +185,10 @@ p img {
   margin: 0;
 }
 
+img {
+  margin-bottom: 4em;
+}
+
 p.lead {
   font-family: "Nunito Sans", sans-serif;
   font-weight: 300;
@@ -623,13 +627,13 @@ form,
 
 /* dots jump */
 .dots-jump > div {
-  -webkit-animation: dots-jump 0.6s infinite ease;
-  animation: dots-jump 0.6s infinite ease;
-  animation-delay: 0.2s;
+  -webkit-animation: dots-jump 0.1s infinite ease;
+  animation: dots-jump 0.1s infinite ease;
+  /*animation-delay: 0.2s;*/
 }
 
 .dots-jump > div:nth-of-type(1) {
-  animation-delay: 0.4s;
+  /*animation-delay: 0.1s;*/
 }
 
 .dots-jump > div:nth-of-type(3) {
@@ -668,13 +672,13 @@ form,
 
 /* dots fade */
 .dots-fade > div {
-  -webkit-animation: dots-fade 0.6s infinite ease;
-  animation: dots-fade 0.6s infinite ease;
-  animation-delay: 0.2s;
+  -webkit-animation: dots-fade 0.1s infinite ease;
+  animation: dots-fade 0.1s infinite ease;
+  /*animation-delay: 0.07s;*/
 }
 
 .dots-fade > div:nth-of-type(1) {
-  animation-delay: 0.2s;
+  /*animation-delay: 0.07s;*/
 }
 
 .dots-fade > div:nth-of-type(3) {
@@ -713,13 +717,13 @@ form,
 
 /* dots pulse */
 .dots-pulse > div {
-  -webkit-animation: dots-pulse 0.6s infinite ease;
-  animation: dots-pulse 0.6s infinite ease;
-  animation-delay: 0.2s;
+  -webkit-animation: dots-pulse 0.1s infinite ease;
+  animation: dots-pulse 0.1s infinite ease;
+  /*animation-delay: 0.2s;*/
 }
 
 .dots-pulse > div:nth-of-type(1) {
-  animation-delay: 0.2s;
+  /*animation-delay: 0.2s;*/
 }
 
 .dots-pulse > div:nth-of-type(3) {
@@ -2419,7 +2423,7 @@ html.ss-preload .home-content__main {
 }
 
 html.ss-loaded .home-content__main {
-  animation-duration: 1s;
+  animation-duration: 0.2s;
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
 }
@@ -2779,7 +2783,7 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-about {
-  padding-top: 18rem;
+  padding-top: 10rem;
   padding-bottom: 10rem;
   background-color: #121212;
   position: relative;
