@@ -81,7 +81,7 @@ body {
   font-style: normal;
   font-weight: normal;
   line-height: 1.941;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.5);
   margin: 0;
   padding: 0;
 }
@@ -195,7 +195,7 @@ p.lead {
   font-size: 2.4rem;
   line-height: 1.625;
   margin-bottom: 3.6rem;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 p.li {
@@ -204,7 +204,7 @@ p.li {
   font-size: 2.4rem;
   line-height: 1.625;
   margin-bottom: 3.6rem;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 p.ul {
@@ -213,7 +213,7 @@ p.ul {
   font-size: 2.4rem;
   line-height: 1.625;
   margin-bottom: 3.6rem;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 @media only screen and (max-width:1200px) {
@@ -302,7 +302,7 @@ blockquote cite:before {
 
 blockquote cite a,
 blockquote cite a:visited {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.5);
   border: none;
 }
 
@@ -312,7 +312,7 @@ abbr {
   font-variant: small-caps;
   text-transform: lowercase;
   letter-spacing: .05rem;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 var,
@@ -403,7 +403,7 @@ ul li {
   font-size: 2.4rem;
   line-height: 1.625;
   margin-bottom: 3.6rem;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 ul ul,
@@ -3714,7 +3714,7 @@ html.no-csstransitions .home-content__main {
 
 .contact-email a:hover,
 .contact-email a:focus {
-  border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.5);
 }
 
 /* ------------------------------------------------------------------- 
