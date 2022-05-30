@@ -109,10 +109,10 @@
         <div class="row bit-narrow" data-aos="fade-up">
             <div class="col-full">
                 <p class="lead">
-                    A triangulation of a set of points is created by drawing non-intersecting lines between points until no more lines can be added. Each face in the resulting graph is a triangle. Triangulation graphs have applications in <a href="https://en.wikipedia.org/wiki/Point_location">point location</a> algorithms as well as computer graphics meshing.
+                    A triangulation of a set of points is created by drawing non-intersecting line segments between points until no more lines can be added. Each face in the resulting graph is a triangle. Triangulation graphs have applications in <a href="https://en.wikipedia.org/wiki/Point_location">point location</a> algorithms as well as computer graphics meshing.
                 </p>
                 <p class="lead">
-                    This project covers triangulation algorithms for both polygons composed of an ordered set of points and arbitrary point clouds.
+                    This project covers triangulation algorithms for both simple polygons and arbitrary point clouds.
                 </p>
             </div>
         </div> <!-- end about-desc -->
@@ -148,13 +148,13 @@
             <div class="col-full">
                 <h3 class="subhead">Algorithm Summary</h3>
                 <p class="lead">
-                    This method uses a linear time method to find a diagonal. The discovered diagonal partitions the polygon into 2 halves. This is repeated recursively on both halves until only 3 points remain, the base case. In the best case when the diagonal evenly partitions the points of the polygon, the algorithm runs in O(nlog(n)) time in much the same way Quicksort operates. In the worst case, the diagonal only clips an ear and the algorithm runs in O(n^2) time.
+                    This method uses a linear time method to find a diagonal. The discovered diagonal partitions the polygon into 2 halves. This is repeated recursively on both halves until only 3 points remain, the base case. In the best case when the diagonal evenly partitions the points of the polygon, the algorithm runs in O(nlog(n)) time in much the same way Quicksort operates. In the worst case, the diagonal only clips an ear and the algorithm runs in O(n<sup>2</sup>) time.
                 </p>
                 <h3 class="subhead">Analysis</h3>
                 <p class="lead">
-                    In the best case the algorithm runs as, T(n) = n + 2T(n/2) = O(nlog(n)).
+                    In the best case the algorithm runs as, T(n) = n + 2T(<sup>n</sup>&frasl;<sub>2</sub>) = O(nlog(n)).
                     <br>
-                    But in the worst case the algorithm runs as T(n) = n + T(1) + T(n-1) = O(n^2).
+                    But in the worst case the algorithm runs as T(n) = n + T(1) + T(n-1) = O(n<sup>2</sup>).
                 </p>
             </div>
         </div> <!-- end about-desc -->
@@ -209,7 +209,7 @@
                 <!-- <img src="https://imgur.com/a/K33KxRb" /> -->
                 <h3 class="subhead">Analysis</h3>
                 <p class="lead">
-                    A scanline approach considers points in order by y-coordinate. To achieve this, the points must be sorted, so immediately the algorithm runs in Omega(nlogn).
+                    A scanline approach considers points in order by y-coordinate. To achieve this, the points must be sorted, so immediately the algorithm runs in Ω(nlogn).
                 </p>
             </div>
         </div> <!-- end about-desc -->
@@ -249,7 +249,7 @@
                     In this section we present a simple incremental algorithm that constructs the Delaunay Triangulation. The Delaunay triangulation (or else Delone) can be defined as a triangulation method such that given a set of vertices V, after applying a triangulation transformation DT(V), no vertex lies inside the circumcircle of any triangle (besides the vertices that form that triangle). The objective of this technique is to maximize the minimum angle between all the angles of the existing triangles. As a result, we obtain a structure that does not frequently contain triangles with extremely acute angles.
                 </p>
                 <p class="lead">
-                    The input of the algorithm is a set of points (nodes) V = {v1,v2,...vn}. The idea of the algorithm is to incrementally insert new points one after another and update our structure every round. It is also important to point out that this method always maintains  a Deulaunay triangulation at any given point in time.  
+                    The input of the algorithm is a set of points (nodes) V = {v<sub>1</sub>,v<sub>2</sub>,...v<sub>n</sub>}. The idea of the algorithm is to incrementally insert new points one after another and update our structure every round. It is also important to point out that this method always maintains  a Deulaunay triangulation at any given point in time.  
                 </p>
                 <p class ="lead">
                     This algorithm does not only build the triangulation, but also provides a point-location data structure for the final triangulation. It can also be used to generate a Voronoi diagram, which is the dual graph of a Delaunay triangulation.
@@ -265,44 +265,44 @@
                     The algorithm can be described as follows: 
                 </p>
                 <p class="lead">
-                    We are given a set of vertices  V={v1,v2,...,vn}. Since the proposed algorithm is an incremental method, it implies that vertices will be added into space one after another. 
+                    We are given a set of vertices  V={v<sub>1</sub>,v<sub>2</sub>,...,v<sub>n</sub>}. Since the proposed algorithm is an incremental method, it implies that vertices will be added into space one after another. 
 
                 </p>
                 <p class="lead">
                     Before we begin with our vertex insertion process, we need to ensure that all our vertices in the vertex set S are contained within one large triangle. This temporary triangle is necessary to exist as the whole process is based on the idea that every newly added vertex should fall within some existing triangle. To satisfy this condition, we add 3 temporary vertices which form a triangle that encloses all the vertices of V. After our triangulation process is concluded for all the vertices of V, the temporary vertices and consequently the edges that connect to them will be removed.
                 </p>
                 <p class="lead">
-                    After we generate the temporary triangle, we begin our process by arbitrarily inserting a new vertex Vk in space every round.  The next step is to find the triangle Δabc that contains Vk. After we identify the triangle Δabc, we draw edges from each vertex (a,b,c) that connect to Vk {a,vK}, {b,Vk}, {c,Vk}. This consequently creates 3 sub-triangles ΔabVk, ΔacVk, ΔbcVk. 
+                    After we generate the temporary triangle, we begin our process by arbitrarily inserting a new vertex V<sub>k</sub> in space every round.  The next step is to find the triangle Δabc that contains V<sub>k</sub>. After we identify the triangle Δabc, we draw edges from each vertex (a,b,c) that connect to V<sub>k</sub> {a,V<sub>k</sub>}, {b,V<sub>k</sub>}, {c,V<sub>k</sub>}. This consequently creates 3 sub-triangles ΔabV<sub>k</sub>, ΔacV<sub>k</sub>, ΔbcV<sub>k</sub>. 
                 </p>
                 <p class="lead">
-                    Now, for each new triangle we need to check the vertex of the triangle that lies on the opposite side of the edge that does not contain Vk. To elaborate, assume that our triangle is Δv1v2Vk. We need to identify the vertex d, that is on the opposite side of {v1,v2} That does not include Vk. If such a vertex d does not exist, this implies that our edge {v1,v2} falls on the convex hull. In this case we do nothing. If however we do identify a vertex Vd, then we need to follow the process below: 
+                    Now, for each new triangle we need to check the vertex of the triangle that lies on the opposite side of the edge that does not contain V<sub>k</sub>. To elaborate, assume that our triangle is Δv<sub>1</sub>v<sub>2</sub>V<sub>k</sub>. We need to identify the vertex d, that is on the opposite side of {v<sub>1</sub>,v<sub>2</sub>} That does not include V<sub>k</sub>. If such a vertex d does not exist, this implies that our edge {v<sub>1</sub>,v<sub>2</sub>} falls on the convex hull. In this case we do nothing. If however we do identify a vertex V<sub>d</sub>, then we need to follow the process below: 
                 </p>
                 <p class="lead">
-                    If Vd is within the circumcircle of Δv1v2vk, then we remove {v1,v2}, and connect vk,vd with {vk,vd}. In addition, we recursively repeat the same process, this time with triangles Δvkv1vd, and Δvkv2,vd.  
+                    If V<sub>d</sub> is within the circumcircle of Δv<sub>1</sub>v<sub>2</sub>V<sub>k</sub>, then we remove {v<sub>1</sub>,v<sub>2</sub>}, and connect V<sub>k</sub>,V<sub>d</sub> with {V<sub>k</sub>,V<sub>d</sub>}. In addition, we recursively repeat the same process, this time with triangles ΔV<sub>k</sub>v<sub>1</sub>V<sub>d</sub>, and ΔV<sub>k</sub>v<sub>2</sub>,V<sub>d</sub>.  
                 </p>
 
                 <h3 class="subhead">Pseudocode</h3>
                 <p class="lead">
                     <xmp class="lead">
                     Triangulation(v) {
-                        Identify triangle Δabc that contains vk
-                        Connect vk with a,b,c adding {vk,a}, {vk,b},{vk,c}
-                        Opposite_vertex_test(vk,a,b)
-                        Opposite_vertex_test(vk,a,c)
-                        Opposite_vertex_test(vk,b,c)
+                        Identify triangle Δabc that contains Vk
+                        Connect Vk with a,b,c adding {Vk,a}, {Vk,b},{Vk,c}
+                        Opposite_vertex_test(Vk,a,b)
+                        Opposite_vertex_test(Vk,a,c)
+                        Opposite_vertex_test(Vk,b,c)
                     }
 
-                    Opposite_vertex_test(vk,v1,v2){
+                    Opposite_vertex_test(Vk,v1,v2){
                         If {v1,v2} falls on the convex hull:
                             end function
                         Else:
-                            Find vertex d that is on the opposite side of vk in terms of {v1,v2} 
-                            (in between of d and vk falls the edge {v1,v2}
-                            If d falls within the circumcircle of the triangle Δvk,v1,v2:
+                            Find vertex d that is on the opposite side of Vk in terms of {v1,v2} 
+                            (in between of d and Vk falls the edge {v1,v2}
+                            If d falls within the circumcircle of the triangle ΔVk,v1,v2:
                                 Remove edge {v1,v2}
-                                Add edge {vk,v2}
-                                Opposite_vertex_test(vk,v1,d)
-                                Opposite_vertex_test(vk,v2,d)
+                                Add edge {Vk,v2}
+                                Opposite_vertex_test(Vk,v1,d)
+                                Opposite_vertex_test(Vk,v2,d)
                     }
                     </xmp>
 
@@ -395,7 +395,7 @@
                 </p>
 
                 <p class ="lead">
-                    Geodesic Path - The geodesic between 2 points p1,p2 in P is the shortest polygonal path contained in P that connects them.
+                    Geodesic Path - The geodesic between 2 points p<sub>1</sub>,p<sub>2</sub> in P is the shortest polygonal path contained in P that connects them.
                 </p>
 
                 <p class ="lead">
