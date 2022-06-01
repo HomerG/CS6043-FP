@@ -173,11 +173,18 @@
                     <br>
                     Repeat this process until the good-sub-polygon contains only 3 points. Notice, the good-sub-polygon contains less than half the points on the selected side of the partition. This form of recursion forms a geometric series. Thus, an ear is found in O(n) time.
                 </p>
+                <h3 class="subhead">Analysis</h3>
                 <p class="lead">
-                    To triangulate a polygon of n points, n ears must be clipped. Therefore, triangulation by this method run in O(n) time.
+                    At each iteration, the smaller half is selected, so the function runs as T(n) = n + T(&lt;n/2). This is a geometric series, so overall an ear is found in linear time.
+                </p>
+                <p class="lead">
+                    To triangulate a polygon of n points, n ears must be clipped. Therefore, triangulation by this method run in O(n<sup>2</sup>) time.
                 </p>
             </div>
         </div> <!-- end about-desc -->
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/B2mOz93lOVc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </section> <!-- end s-services -->
 
 
